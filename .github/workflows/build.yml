@@ -30,20 +30,20 @@ jobs:
       contents: read
       packages: write
 
-  sbom-grype:
-    needs: [build]
-    uses: ./.github/workflows/.sbom-grype.yml
-    permissions:
-      contents: read
-
   rechunk:
-    needs: [sbom-grype]
+    needs: [build]
     uses: ./.github/workflows/.rechunk.yml
     permissions:
       contents: read
 
-  push:
+  sbom-grype:
     needs: [rechunk]
+    uses: ./.github/workflows/.sbom-grype.yml
+    permissions:
+      contents: read
+
+  push:
+    needs: [sbom-grype]
     if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     uses: ./.github/workflows/.push.yml
     permissions:

@@ -39,17 +39,21 @@ jobs:
           echo "old_digest=${OLD_DIGEST}" >> $GITHUB_OUTPUT
           echo "Old digest: ${OLD_DIGEST:-none}"
 
-      - name: Download Artifact
+      - name: Download Rechunked Artifact
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
-          name: image-${{ matrix.image_name }}
+          name: image-${{ matrix.image_name }}-rechunked
           path: /tmp
 
       - name: Verify Checksum
-        run: sha256sum -c /tmp/${{ matrix.image_name }}.tar.sha256
+        run: sha256sum -c /tmp/${{ matrix.image_name }}-rechunked.tar.sha256
 
       - name: Load Image
-        run: podman image load -i /tmp/${{ matrix.image_name }}.tar
+        run: |
+          podman image load -i /tmp/${{ matrix.image_name }}-rechunked.tar
+          podman tag \
+            ghcr.io/ferret-linux/${{ matrix.image_name }}:rechunked \
+            ghcr.io/ferret-linux/${{ matrix.image_name }}:latest
 
       - name: Push
         run: |
