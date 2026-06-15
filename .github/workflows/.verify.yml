@@ -1,0 +1,55 @@
+# SPDX-License-Identifier: GPL-3.0-only
+#
+# This file is part of the rubin-os project:
+#    https://github.com/ferret-linux/rubin-os
+# Copyright (C) 2026 Ferret Linux contributors
+
+name: verify (internal)
+
+on:
+  workflow_call:
+
+jobs:
+  verify:
+    name: Verify ${{ matrix.image_name }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image_name: rubin-os
+          - image_name: rubin-os-nvidia
+
+    steps:
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | podman login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+
+      - name: Verify Signature
+        run: |
+          for i in 1 2 3; do
+            cosign verify \
+              --certificate-identity-regexp="https://github.com/ferret-linux/rubin-os/.*" \
+              --certificate-oidc-issuer="https://token.actions.githubusercontent.com" \
+              ghcr.io/ferret-linux/${{ matrix.image_name }}:latest && break
+            echo "Attempt $i/3 failed, retrying in 15s..."
+            sleep 15
+          done
+
+      - name: Pull Image
+        run: |
+          for i in 1 2 3; do
+            podman pull ghcr.io/ferret-linux/${{ matrix.image_name }}:latest && break
+            echo "Attempt $i/3 failed, retrying in 15s..."
+            sleep 15
+          done
+
+      - name: Run Image
+        run: |
+          podman run --rm ghcr.io/ferret-linux/${{ matrix.image_name }}:latest echo ok
