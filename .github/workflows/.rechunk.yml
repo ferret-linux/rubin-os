@@ -1,0 +1,72 @@
+# SPDX-License-Identifier: GPL-3.0-only
+#
+# This file is part of the rubin-os project:
+#    https://github.com/ferret-linux/rubin-os
+# Copyright (C) 2026 Ferret Linux contributors
+
+name: rechunk (internal)
+
+on:
+  workflow_call:
+
+jobs:
+  rechunk:
+    name: Rechunk ${{ matrix.image_name }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image_name: rubin-os
+          - image_name: rubin-os-nvidia
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: image-${{ matrix.image_name }}
+          path: /tmp
+
+      - name: Verify Checksum
+        run: sha256sum -c /tmp/${{ matrix.image_name }}.tar.sha256
+
+      - name: Load Image
+        run: podman image load -i /tmp/${{ matrix.image_name }}.tar
+
+      - name: Rechunk
+        run: |
+          export CHUNKAH_CONFIG_STR="$(podman inspect ghcr.io/ferret-linux/${{ matrix.image_name }}:latest)"
+          podman run --rm \
+            "--mount=type=image,src=ghcr.io/ferret-linux/${{ matrix.image_name }}:latest,target=/chunkah" \
+            -e CHUNKAH_CONFIG_STR \
+            quay.io/coreos/chunkah build \
+            --prune /sysroot/ \
+            --label containers.bootc=1 \
+            --compressed \
+            --max-layers 128 \
+            --tag ghcr.io/ferret-linux/${{ matrix.image_name }}:latest \
+            | podman load
+
+      - name: Save Rechunked Image
+        run: |
+          podman image save \
+            ghcr.io/ferret-linux/${{ matrix.image_name }}:latest \
+            -o /tmp/${{ matrix.image_name }}.tar
+
+      - name: Checksum
+        run: |
+          sha256sum /tmp/${{ matrix.image_name }}.tar \
+            > /tmp/${{ matrix.image_name }}.tar.sha256
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: image-${{ matrix.image_name }}
+          path: |
+            /tmp/${{ matrix.image_name }}.tar
+            /tmp/${{ matrix.image_name }}.tar.sha256
+          retention-days: 1
+          overwrite: true
