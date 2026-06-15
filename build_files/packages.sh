@@ -6,7 +6,7 @@ set -ouex pipefail
 dnf5 install -y --setopt=install_weak_deps=False \
     xdg-utils \
     xdg-user-dirs \
-    zdg-user-dirs-gtk \
+    xdg-user-dirs-gtk \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
     xdg-desktop-portal-gnome \
