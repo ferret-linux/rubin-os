@@ -3,12 +3,12 @@ name: Build RubinOS
 on:
   pull_request:
     branches:
-      - main
+      - stable
   schedule:
     - cron: '05 10 * * *'
   push:
     branches:
-      - main
+      - stable
     paths-ignore:
       - '**/README.md'
   workflow_dispatch:
