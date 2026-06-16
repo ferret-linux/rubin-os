@@ -53,8 +53,8 @@ dnf5 install -y --setopt=install_weak_deps=False \
     nautilus-python \
     ghostty \
     mousetweaks \
-    input-remapper \
-    helium-drm
+    input-remapper
+    #helium-drm
 
 ### Install input methods (ibus)
 dnf5 install -y --setopt=install_weak_deps=False \
