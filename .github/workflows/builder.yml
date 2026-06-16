@@ -17,8 +17,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
-  cancel-in-progress: true
+  group: ${{ (github.event_name == 'workflow_dispatch' || github.event_name == 'schedule') && 'full-pipeline' || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' }}
+
 
 jobs:
   build:
