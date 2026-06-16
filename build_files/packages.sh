@@ -54,8 +54,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     ghostty \
     mousetweaks \
     input-remapper \
-    helium-drm \
-    code
+    helium-drm
 
 ### Install input methods (ibus)
 dnf5 install -y --setopt=install_weak_deps=False \
