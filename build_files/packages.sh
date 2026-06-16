@@ -12,6 +12,13 @@ dnf5 install -y --setopt=install_weak_deps=False \
     xdg-desktop-portal-gnome \
     ffmpegthumbs
 
+## Install glycin
+dnf5 install -y --setopt=install_weak_deps=False \
+    glycin-loaders \
+    glycin-thumbnailer \
+    glycin-libs \
+    glycin-gtk4-libs
+
 ### Indtall gnome setup
 dnf5 install -y --setopt=install_weak_deps=False \
     gnome-initial-setup \
@@ -50,6 +57,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
 dnf5 install -y --setopt=install_weak_deps=False \
     nautilus \
     bazaar \
+    gnome-extensions-app \
     nautilus-python \
     ghostty \
     mousetweaks \
