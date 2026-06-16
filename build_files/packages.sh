@@ -26,7 +26,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-firmware \
     gnome-keyring \
     gnome-logs \
-    gnome-rdp \
     gnome-tweaks \
     gnome-remote-desktop \
 
