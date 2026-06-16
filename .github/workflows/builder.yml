@@ -12,7 +12,8 @@ on:
     paths-ignore:
       - '**/README.md'
   schedule:
-    - cron: '05 10 * * *'
+    - cron: '05 04 * * *'
+    - cron: '05 16 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -40,7 +41,7 @@ jobs:
 
   push:
     needs: [sbom-grype]
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     uses: ./.github/workflows/.push.yml
     permissions:
       contents: read
@@ -50,7 +51,7 @@ jobs:
 
   verify:
     needs: [push]
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     uses: ./.github/workflows/.verify.yml
     permissions:
       contents: read
