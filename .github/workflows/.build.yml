@@ -71,6 +71,18 @@ jobs:
             sleep 30
           done
 
+      - name: Prune
+        run: |
+          podman image prune -f
+          podman container prune -f
+
+      - name: Free Disk Space
+        uses: hastd/free-disk-space@68572aeaadb7f76bd408246328e95926323402b5 # v0.1.2
+        with:
+          exclude: |
+            /opt/hostedtoolcache/Python
+          skip-if-available: "64G"
+
       - name: Save Image
         run: |
           podman image save \
