@@ -32,13 +32,13 @@ jobs:
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: rollback-${{ matrix.image_name }}
-          path: /tmp/rollback
+          path: /home/runner/work/rollback
 
       - name: Read Rollback Info
         id: info
         run: |
-          OLD_DIGEST=$(cat /tmp/rollback/${{ matrix.image_name }}-old-digest)
-          NEW_VERSION_ID=$(cat /tmp/rollback/${{ matrix.image_name }}-new-version-id)
+          OLD_DIGEST=$(cat /home/runner/work/rollback/${{ matrix.image_name }}-old-digest)
+          NEW_VERSION_ID=$(cat /home/runner/work/rollback/${{ matrix.image_name }}-new-version-id)
           echo "old_digest=${OLD_DIGEST}" >> $GITHUB_OUTPUT
           echo "new_version_id=${NEW_VERSION_ID}" >> $GITHUB_OUTPUT
           echo "Old digest: ${OLD_DIGEST:-none}"

@@ -43,14 +43,14 @@ jobs:
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: image-${{ matrix.image_name }}-rechunked
-          path: /tmp
+          path: /home/runner/work
 
       - name: Verify Checksum
-        run: sha256sum -c /tmp/${{ matrix.image_name }}-rechunked.tar.sha256
+        run: sha256sum -c /home/runner/work/${{ matrix.image_name }}-rechunked.tar.sha256
 
       - name: Load Image
         run: |
-          podman image load -i /tmp/${{ matrix.image_name }}-rechunked.tar
+          podman image load -i /home/runner/work/${{ matrix.image_name }}-rechunked.tar
           podman tag \
             ghcr.io/ferret-linux/${{ matrix.image_name }}:rechunked \
             ghcr.io/ferret-linux/${{ matrix.image_name }}:latest
@@ -67,7 +67,7 @@ jobs:
           echo -e "docker:\n  ghcr.io/ferret-linux:\n    use-sigstore-attachments: true" \
             | sudo tee /etc/containers/registries.d/ferret-linux.yaml
 
-          DIGESTFILE="/tmp/${{ matrix.image_name }}-digest"
+          DIGESTFILE="/home/runner/work/${{ matrix.image_name }}-digest"
 
           # HACK: push two times so layer annotations are present
           # TODO: remove when https://github.com/containers/podman/issues/27796 is fixed
@@ -99,13 +99,13 @@ jobs:
 
       - name: Save Rollback Info
         run: |
-          mkdir -p /tmp/rollback
-          echo "${{ steps.old-digest.outputs.old_digest }}" > /tmp/rollback/${{ matrix.image_name }}-old-digest
-          echo "${{ steps.new-version.outputs.new_version_id }}" > /tmp/rollback/${{ matrix.image_name }}-new-version-id
+          mkdir -p /home/runner/work/rollback
+          echo "${{ steps.old-digest.outputs.old_digest }}" > /home/runner/work/rollback/${{ matrix.image_name }}-old-digest
+          echo "${{ steps.new-version.outputs.new_version_id }}" > /home/runner/work/rollback/${{ matrix.image_name }}-new-version-id
 
       - name: Upload Rollback Artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: rollback-${{ matrix.image_name }}
-          path: /tmp/rollback/
+          path: /home/runner/work/rollback/
           retention-days: 1
