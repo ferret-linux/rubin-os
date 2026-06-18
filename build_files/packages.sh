@@ -67,7 +67,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     mousetweaks \
     input-remapper \
     file-roller \
-    brave-origin \
     pika-backup
 
 ### Install input methods (ibus)
