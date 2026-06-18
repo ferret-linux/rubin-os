@@ -62,6 +62,8 @@ dnf5 install -y --setopt=install_weak_deps=False \
     bustle \
     resources \
     ghostty \
+    ghostty-nautilus \
+    nautilus-python \
     mousetweaks \
     input-remapper \
     file-roller \
