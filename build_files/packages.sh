@@ -29,7 +29,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     switcheroo-control \
     gnome-disk-utility \
     gnome-bluetooth \
-    gnome-backgrounds \
+    morewaita-icon-theme \
     gnome-firmware \
     gnome-keyring \
     gnome-logs \
@@ -45,8 +45,9 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-gsconnect \
     gnome-shell-extension-appindicator \
     gnome-shell-extension-no-overview \
+    extension-manager \
+    gnome-shell-extension-ibus-font \
     gnome-shell-extension-blur-my-shell \
-    gnome-shell-extension-dash-to-dock \
     gnome-shell-extension-dash-to-dock \
     adwaita-fonts-all \
     orca \
@@ -58,10 +59,13 @@ dnf5 install -y --setopt=install_weak_deps=False \
     nautilus \
     bazaar \
     nautilus-python \
+    bustle \
+    resources \
     ghostty \
     mousetweaks \
     input-remapper \
-    helium-drm
+    brave-origin \
+    pika-backup
 
 ### Install input methods (ibus)
 dnf5 install -y --setopt=install_weak_deps=False \
@@ -71,8 +75,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     ibus-sayura \
     ibus-mozc \
     ibus-hangul \
-    ibus-chewing \
-    gnome-shell-extension-ibus-font \
+    ibus-chewing
 
 ### Enable system services
 systemctl enable gdm
