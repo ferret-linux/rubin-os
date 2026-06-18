@@ -57,7 +57,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
 dnf5 install -y --setopt=install_weak_deps=False \
     nautilus \
     bazaar \
-    gnome-extensions-app \
     nautilus-python \
     ghostty \
     mousetweaks \
