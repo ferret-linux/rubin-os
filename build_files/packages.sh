@@ -64,6 +64,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     ghostty \
     mousetweaks \
     input-remapper \
+    file-roller \
     brave-origin \
     pika-backup
 
