@@ -68,13 +68,17 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-caffeine \
     gnome-shell-extension-gsconnect \
     gnome-shell-extension-apps-menu \
+    gnome-shell-extension-pop-shell \
     gnome-shell-extension-drive-menu \
     gnome-shell-extension-user-theme \
     gnome-shell-extension-places-menu \
+    gnome-shell-extension-no-overview \
+    gnome-shell-extension-dash-to-dock \
     gnome-shell-extension-status-icons \
     gnome-shell-extension-blur-my-shell \
     gnome-shell-extension-launch-new-instance \
-    gnome-shell-extension-all-in-one-clipboard
+    gnome-shell-extension-clipboard-indicator \
+    gnome-shell-extension-rounded-window-corners
 
 ### Install gnome apps
 dnf5 install -y --setopt=install_weak_deps=False \
