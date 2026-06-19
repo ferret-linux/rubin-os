@@ -56,7 +56,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-native-window-placement \
     gnome-shell-extension-places-menu \
     gnome-shell-extension-launch-new-instance \
-    gnome-shell-extension-coverflow \
     gnome-shell-extension-all-in-one-clipboard \
 
 ### Install gnome apps
@@ -74,7 +73,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     file-roller \
     extension-manager \
     pika-backup \
-    refine \
     wardrobe
 
 ### Install input methods (ibus)
