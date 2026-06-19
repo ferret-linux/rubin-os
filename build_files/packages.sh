@@ -111,6 +111,10 @@ dnf5 install -y --setopt=install_weak_deps=False \
 ### Update Dconf
 dconf update
 
+### Remove Extra .desktop icons
+rm -rf /usr/share/applications/nvim.desktop
+rm -rf /usr/share/applications/btop.desktop
+
 ### Enable system services
 systemctl enable gdm
 systemctl enable switcheroo-control.service
