@@ -10,79 +10,100 @@ dnf5 install -y --setopt=install_weak_deps=False \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
     xdg-desktop-portal-gnome \
-    ffmpegthumbs
+
+## Install Gnome
+dnf5 install -y --setopt=install_weak_deps=False \
+    libsecret \
+    gnome-shell \
+    gnome-tweaks \
+    gnome-session \
+    gnome-keyring \
+    gnome-bluetooth \
+    gnome-keyring-pam \
+    gnome-control-center \
+    gnome-remote-desktop \
+    gnome-online-accounts \
+    gnome-settings-daemon
+
+## Install Nautilus
+dnf5 install -y --setopt=install_weak_deps=False \
+    sushi \
+    nautilus \
+    nautilus-python \
+    nautilus-gsconnect \
+    nautilus-extensions \
+    ghostty-nautilus
 
 ## Install glycin
 dnf5 install -y --setopt=install_weak_deps=False \
-    glycin-loaders \
-    glycin-thumbnailer \
     glycin-libs \
-    glycin-gtk4-libs
+    glycin-loaders \
+    glycin-gtk4-libs \
+    glycin-thumbnailer
 
 ### Indtall gnome setup
 dnf5 install -y --setopt=install_weak_deps=False \
-    gnome-initial-setup \
-    gdm
+    gdm \
+    gnome-initial-setup
 
-### Install gnome addons
+### Install Network Manager Addons
 dnf5 install -y --setopt=install_weak_deps=False \
-    NetworkManager-openconnect-gnome \
     NetworkManager-ssh-gnome \
-    NetworkManager-openconnect-gnome \
-    switcheroo-control \
-    gnome-disk-utility \
-    gnome-bluetooth \
-    morewaita-icon-theme \
-    gnome-firmware \
-    gnome-keyring \
-    gnome-logs \
-    gnome-remote-desktop \
-    adwaita-fonts-all \
+    NetworkManager-openvpn-gnome \
+    NetworkManager-openconnect-gnome
+
+### Gnome Integrations
+dnf5 install -y --setopt=install_weak_deps=False \
     orca \
-    speech-dispatcher \
     espeak-ng \
+    mousetweaks \
+    speech-dispatcher \
+    adwaita-fonts-all \
+    switcheroo-control
 
 ### Install gnome extensions
 dnf5 install -y --setopt=install_weak_deps=False \
     gnome-classic-session \
     gnome-shell-extension-caffeine \
     gnome-shell-extension-gsconnect \
+    gnome-shell-extension-apps-menu \
+    gnome-shell-extension-drive-menu \
     gnome-shell-extension-user-theme \
+    gnome-shell-extension-places-menu \
+    gnome-shell-extension-light-style \
     gnome-shell-extension-status-icons \
     gnome-shell-extension-blur-my-shell \
-    gnome-shell-extension-drive-menu \
-    gnome-shell-extension-apps-menu \
-    gnome-shell-extension-light-style \
-    gnome-shell-extension-native-window-placement \
-    gnome-shell-extension-places-menu \
     gnome-shell-extension-launch-new-instance \
     gnome-shell-extension-all-in-one-clipboard \
+    gnome-shell-extension-native-window-placement \
 
 ### Install gnome apps
 dnf5 install -y --setopt=install_weak_deps=False \
-    nautilus \
-    bazaar \
-    nautilus-python \
-    bustle \
-    resources \
-    ghostty \
-    ghostty-nautilus \
     pods \
-    nautilus-python \
-    mousetweaks \
-    input-remapper \
-    file-roller \
-    extension-manager \
+    bazaar \
+    bustle \
+    ghostty \
+    wardrobe \
+    resources \
+    gnome-logs \
     pika-backup \
-    wardrobe
+    file-roller \
+    gnome-firmware \
+    extension-manager \
+    gnome-disk-utility
+
+### Gnome Theming
+dnf5 install -y --setopt=install_weak_deps=False \
+    adw-gtk3-theme \
+    morewaita-icon-theme
 
 ### Install input methods (ibus)
 dnf5 install -y --setopt=install_weak_deps=False \
     ibus \
-    ibus-pinyin \
     ibus-rime \
-    ibus-sayura \
     ibus-mozc \
+    ibus-pinyin \
+    ibus-sayura \
     ibus-hangul \
     ibus-chewing
 
