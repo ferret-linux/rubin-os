@@ -7,6 +7,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     xdg-utils \
     xdg-user-dirs \
     xdg-user-dirs-gtk \
+    xdg-terminal-exec \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
     xdg-desktop-portal-gnome \
