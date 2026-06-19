@@ -26,6 +26,9 @@ dnf5 install -y --setopt=install_weak_deps=False \
 
 ### Install gnome addons
 dnf5 install -y --setopt=install_weak_deps=False \
+    NetworkManager-openconnect-gnome \
+    NetworkManager-ssh-gnome \
+    NetworkManager-openconnect-gnome \
     switcheroo-control \
     gnome-disk-utility \
     gnome-bluetooth \
@@ -33,26 +36,28 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-firmware \
     gnome-keyring \
     gnome-logs \
-    gnome-tweaks \
     gnome-remote-desktop \
-
-### Install gnome optionals
-dnf5 install -y --setopt=install_weak_deps=False \
-    NetworkManager-openconnect-gnome \
-    NetworkManager-ssh-gnome \
-    NetworkManager-openconnect-gnome \
-    gnome-shell-extension-caffeine \
-    gnome-shell-extension-gsconnect \
-    gnome-shell-extension-appindicator \
-    gnome-shell-extension-no-overview \
-    extension-manager \
-    gnome-shell-extension-ibus-font \
-    gnome-shell-extension-blur-my-shell \
-    gnome-shell-extension-dash-to-dock \
     adwaita-fonts-all \
     orca \
     speech-dispatcher \
     espeak-ng \
+
+### Install gnome extensions
+dnf5 install -y --setopt=install_weak_deps=False \
+    gnome-classic-session \
+    gnome-shell-extension-caffeine \
+    gnome-shell-extension-gsconnect \
+    gnome-shell-extension-user-theme \
+    gnome-shell-extension-status-icons \
+    gnome-shell-extension-blur-my-shell \
+    gnome-shell-extension-drive-menu \
+    gnome-shell-extension-apps-menu \
+    gnome-shell-extension-light-style \
+    gnome-shell-extension-native-window-placement \
+    gnome-shell-extension-places-menu \
+    gnome-shell-extension-launch-new-instance \
+    gnome-shell-extension-coverflow \
+    gnome-shell-extension-all-in-one-clipboard \
 
 ### Install gnome apps
 dnf5 install -y --setopt=install_weak_deps=False \
@@ -67,7 +72,10 @@ dnf5 install -y --setopt=install_weak_deps=False \
     mousetweaks \
     input-remapper \
     file-roller \
-    pika-backup
+    extension-manager \
+    pika-backup \
+    refine \
+    wardrobe
 
 ### Install input methods (ibus)
 dnf5 install -y --setopt=install_weak_deps=False \
