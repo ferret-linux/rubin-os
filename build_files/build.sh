@@ -29,3 +29,5 @@ done
 
 echo ""
 echo "  ✓  all done"
+echo "Final RPM Count"
+rpm -qa | wc -l
