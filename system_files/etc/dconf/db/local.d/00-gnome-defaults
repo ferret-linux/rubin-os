@@ -3,6 +3,7 @@ icon-theme='Morewaita'
 cursor-theme='Adwaita'
 gtk-theme='adw-gtk3'
 color-scheme='prefer-dark'
+clock-format='12h'
 
 [org/gnome/desktop/background]
 picture-uri='file:///usr/share/backgrounds/gnome/ruby-light.jpg'
@@ -14,3 +15,12 @@ button-layout='appmenu:minimize,maximize,close'
 
 [org/gnome/shell]
 favorite-apps=['com.mitchellh.ghostty.desktop', 'org.gnome.Nautilus.desktop', 'io.github.kolunmi.Bazaar.desktop', 'helium.desktop', 'com.github.marhkb.Pods.desktop', 'org.gnome.World.PikaBackup.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Settings.desktop']
+
+[org/gnome/desktop/peripherals/mouse]
+accel-profile='flat'
+
+[org/gnome/desktop/peripherals/touchpad]
+disable-while-typing=false
+
+[org/gnome/desktop/sound]
+allow-volume-above-100-percent=true
