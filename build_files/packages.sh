@@ -71,12 +71,10 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-drive-menu \
     gnome-shell-extension-user-theme \
     gnome-shell-extension-places-menu \
-    gnome-shell-extension-light-style \
     gnome-shell-extension-status-icons \
     gnome-shell-extension-blur-my-shell \
     gnome-shell-extension-launch-new-instance \
-    gnome-shell-extension-all-in-one-clipboard \
-    gnome-shell-extension-native-window-placement \
+    gnome-shell-extension-all-in-one-clipboard
 
 ### Install gnome apps
 dnf5 install -y --setopt=install_weak_deps=False \
