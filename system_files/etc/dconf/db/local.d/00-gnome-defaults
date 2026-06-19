@@ -1,5 +1,5 @@
 [org/gnome/desktop/interface]
-icon-theme='Morewaita'
+icon-theme='MoreWaita'
 cursor-theme='Adwaita'
 gtk-theme='adw-gtk3'
 color-scheme='prefer-dark'
