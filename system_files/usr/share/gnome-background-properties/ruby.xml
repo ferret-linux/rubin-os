@@ -3,8 +3,8 @@
 <wallpapers>
   <wallpaper deleted="false">
     <name>Ruby</name>
-    <filename>/usr/share/backgrounds/gnome/ruby-light.png</filename>
-    <filename-dark>/usr/share/backgrounds/gnome/ruby-dark.png</filename-dark>
+    <filename>/usr/share/backgrounds/gnome/ruby-light.jpg</filename>
+    <filename-dark>/usr/share/backgrounds/gnome/ruby-dark.jpg</filename-dark>
     <options>zoom</options>
     <shade_type>solid</shade_type>
     <pcolor>#c9302c</pcolor>
