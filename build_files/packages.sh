@@ -67,6 +67,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     resources \
     ghostty \
     ghostty-nautilus \
+    pods \
     nautilus-python \
     mousetweaks \
     input-remapper \
