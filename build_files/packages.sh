@@ -88,6 +88,8 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-logs \
     pika-backup \
     file-roller \
+    brave-origin \
+    brave-keyring \
     gnome-firmware \
     extension-manager \
     gnome-disk-utility
