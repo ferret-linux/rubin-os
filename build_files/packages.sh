@@ -80,6 +80,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
 ### Install gnome apps
 dnf5 install -y --setopt=install_weak_deps=False \
     pods \
+    code \
     bazaar \
     bustle \
     ghostty \
