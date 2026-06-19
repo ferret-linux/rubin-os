@@ -85,11 +85,10 @@ dnf5 install -y --setopt=install_weak_deps=False \
     ghostty \
     wardrobe \
     resources \
+    helium-drm \
     gnome-logs \
     pika-backup \
     file-roller \
-    brave-origin \
-    brave-keyring \
     gnome-firmware \
     extension-manager \
     gnome-disk-utility
@@ -108,6 +107,9 @@ dnf5 install -y --setopt=install_weak_deps=False \
     ibus-sayura \
     ibus-hangul \
     ibus-chewing
+
+### Update Dconf
+dconf update
 
 ### Enable system services
 systemctl enable gdm
