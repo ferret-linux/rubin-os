@@ -76,13 +76,14 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-tiling-shell \
     gnome-shell-extension-status-icons \
     gnome-shell-extension-blur-my-shell \
+    gnome-shell-extension-just-perfection \
     gnome-shell-extension-coverflow-alt-tab \
     gnome-shell-extension-auto-accent-colour \
     gnome-shell-extension-accent-directories \
     gnome-shell-extension-launch-new-instance \
     gnome-shell-extension-clipboard-indicator \
-    gnome-shell-extension-rounded-window-corners \
     gnome-shell-extension-gtk4-desktop-icons-ng-ding \
+    gnome-shell-extension-rounded-window-corners-reborn
 
 ### Install gnome apps
 dnf5 install -y --setopt=install_weak_deps=False \
