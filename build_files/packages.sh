@@ -66,19 +66,23 @@ dnf5 install -y --setopt=install_weak_deps=False \
 dnf5 install -y --setopt=install_weak_deps=False \
     gnome-classic-session \
     gnome-shell-extension-caffeine \
+    gnome-shell-extension-o-tiling \
     gnome-shell-extension-gsconnect \
     gnome-shell-extension-apps-menu \
-    gnome-shell-extension-pop-shell \
     gnome-shell-extension-drive-menu \
     gnome-shell-extension-user-theme \
     gnome-shell-extension-places-menu \
     gnome-shell-extension-no-overview \
-    gnome-shell-extension-dash-to-dock \
+    gnome-shell-extension-tiling-shell \
     gnome-shell-extension-status-icons \
     gnome-shell-extension-blur-my-shell \
+    gnome-shell-extension-coverflow-alt-tab \
+    gnome-shell-extension-auto-accent-colour \
+    gnome-shell-extension-accent-directories \
     gnome-shell-extension-launch-new-instance \
     gnome-shell-extension-clipboard-indicator \
-    gnome-shell-extension-rounded-window-corners
+    gnome-shell-extension-rounded-window-corners \
+    gnome-shell-extension-gtk4-desktop-icons-ng-ding \
 
 ### Install gnome apps
 dnf5 install -y --setopt=install_weak_deps=False \
