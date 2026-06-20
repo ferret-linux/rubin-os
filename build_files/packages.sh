@@ -110,7 +110,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
 dnf5 install -y --setopt=install_weak_deps=False \
     bazaar \
     bustle \
-    secrets \
     flatseal \
     resources \
     pika-backup
