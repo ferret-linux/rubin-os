@@ -16,7 +16,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
 dnf5 install -y --setopt=install_weak_deps=False \
     libsecret \
     gnome-shell \
-    gnome-tweaks \
     gnome-session \
     gnome-keyring \
     gnome-bluetooth \
@@ -25,6 +24,16 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-remote-desktop \
     gnome-online-accounts \
     gnome-settings-daemon
+
+## Install Ghostty
+dnf install -y --setopt=install_weak_deps=False \
+    ghostty \
+    ghostty-kio \
+    ghostty-neovim \
+    ghostty-terminfo \
+    ghostty-bat-syntax \
+    ghostty-zsh-completion \
+    ghostty-shell-integration
 
 ## Install Nautilus
 dnf5 install -y --setopt=install_weak_deps=False \
@@ -85,22 +94,34 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-gtk4-desktop-icons-ng-ding \
     gnome-shell-extension-rounded-window-corners-reborn
 
-### Install gnome apps
+### Install gnome core apps
+dnf5 install -y --setopt=install_weak_deps=False \
+    loupe \
+    papers \
+    celluloid \
+    gnome-logs \
+    file-roller \
+    gnome-weather \
+    gnome-firmware \
+    gnome-calculator \
+    gnome-disk-utility
+
+### Install gnome circle apps
+dnf5 install -y --setopt=install_weak_deps=False \
+    bazaar \
+    bustle \
+    secrets \
+    flatseal \
+    resources \
+    pika-backup
+
+### Install user apps
 dnf5 install -y --setopt=install_weak_deps=False \
     pods \
     code \
-    bazaar \
-    bustle \
-    ghostty \
     wardrobe \
-    resources \
     helium-drm \
-    gnome-logs \
-    pika-backup \
-    file-roller \
-    gnome-firmware \
-    extension-manager \
-    gnome-disk-utility
+    extension-manager
 
 ### Gnome Theming
 dnf5 install -y --setopt=install_weak_deps=False \
