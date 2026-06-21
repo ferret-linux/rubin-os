@@ -31,18 +31,23 @@ dnf install -y --setopt=install_weak_deps=False \
     ghostty-kio \
     ghostty-neovim \
     ghostty-terminfo \
+    ghostty-nautilus \
     ghostty-bat-syntax \
     ghostty-zsh-completion \
     ghostty-shell-integration
+
+## GSconnect
+dnf install -y --setopt=install_weak_deps=False \
+    gnome-menus \
+    nautilus-gsconnect \
+    webextension-gsconnect
 
 ## Install Nautilus
 dnf5 install -y --setopt=install_weak_deps=False \
     sushi \
     nautilus \
     nautilus-python \
-    nautilus-gsconnect \
     nautilus-extensions \
-    ghostty-nautilus
 
 ## Install glycin
 dnf5 install -y --setopt=install_weak_deps=False \
@@ -73,9 +78,10 @@ dnf5 install -y --setopt=install_weak_deps=False \
 
 ### Install gnome extensions
 dnf5 install -y --setopt=install_weak_deps=False \
-    gnome-classic-session \
+    gnome-shell-extension-mosaic \
+    gnome-shell-extension-paperwm \
+    gnome-shell-extension-arcmenu \
     gnome-shell-extension-caffeine \
-    gnome-shell-extension-o-tiling \
     gnome-shell-extension-gsconnect \
     gnome-shell-extension-apps-menu \
     gnome-shell-extension-drive-menu \
@@ -84,14 +90,19 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-no-overview \
     gnome-shell-extension-tiling-shell \
     gnome-shell-extension-status-icons \
+    gnome-shell-extension-dash-to-dock \
     gnome-shell-extension-blur-my-shell \
+    gnome-shell-extension-dash-to-panel \
+    gnome-shell-extension-burn-my-windows \
     gnome-shell-extension-just-perfection \
     gnome-shell-extension-coverflow-alt-tab \
     gnome-shell-extension-auto-accent-colour \
     gnome-shell-extension-accent-directories \
     gnome-shell-extension-launch-new-instance \
     gnome-shell-extension-clipboard-indicator \
-    gnome-shell-extension-gtk4-desktop-icons-ng-ding \
+    gnome-shell-extension-vertical-workspaces \
+    gnome-shell-extension-compiz-windows-effect \
+    gnome-shell-extension-desktop-icons-ng-ding \
     gnome-shell-extension-rounded-window-corners-reborn
 
 ### Install gnome core apps
