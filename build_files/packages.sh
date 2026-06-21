@@ -104,7 +104,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-weather \
     gnome-firmware \
     gnome-calculator \
-    gnome-connections \
     gnome-disk-utility
 
 ### Install gnome circle apps
