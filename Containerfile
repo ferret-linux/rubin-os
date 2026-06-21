@@ -11,9 +11,6 @@ ARG IMAGE_NAME
 ARG IMAGE_VENDOR="ferret-linux"
 ARG IMAGE_TAG="latest"
 
-# Copy system files
-COPY system_files/ /
-
 # Make /opt real dir before package install
 RUN rm -rf /opt && mkdir -p /opt
 
@@ -38,6 +35,9 @@ RUN mkdir -p /usr/lib/opt && \
     mkdir -p /var/roothome && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
+
+# Copy system files
+COPY system_files/ /
 
 ### LINTING
 ## Verify final image and contents are correct.
