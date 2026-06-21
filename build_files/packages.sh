@@ -127,6 +127,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
     bustle \
     flatseal \
     resources \
+    bootc-gtk \
     pika-backup
 
 ### Install user apps
@@ -140,6 +141,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
 ### Gnome Theming
 dnf5 install -y --setopt=install_weak_deps=False \
     adw-gtk3-theme \
+    breeze-cursor-theme \
     morewaita-icon-theme
 
 ### Install input methods (ibus)
