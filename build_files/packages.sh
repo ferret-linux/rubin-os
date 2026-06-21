@@ -102,7 +102,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-clipboard-indicator \
     gnome-shell-extension-vertical-workspaces \
     gnome-shell-extension-compiz-windows-effect \
-    gnome-shell-extension-desktop-icons-ng-ding \
     gnome-shell-extension-rounded-window-corners-reborn
 
 ### Install gnome core apps
