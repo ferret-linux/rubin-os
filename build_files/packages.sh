@@ -16,6 +16,7 @@ dnf5 install -y --setopt=install_weak_deps=False \
 dnf5 install -y --setopt=install_weak_deps=False \
     libsecret \
     gnome-shell \
+    gnome-tweaks \
     gnome-session \
     gnome-keyring \
     gnome-bluetooth \
