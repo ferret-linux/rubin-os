@@ -79,29 +79,19 @@ dnf5 install -y --setopt=install_weak_deps=False \
 ### Install gnome extensions
 dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-mosaic \
-    gnome-shell-extension-paperwm \
-    gnome-shell-extension-arcmenu \
     gnome-shell-extension-caffeine \
     gnome-shell-extension-gsconnect \
-    gnome-shell-extension-apps-menu \
     gnome-shell-extension-drive-menu \
     gnome-shell-extension-user-theme \
-    gnome-shell-extension-places-menu \
     gnome-shell-extension-tiling-shell \
     gnome-shell-extension-status-icons \
-    gnome-shell-extension-dash-to-dock \
     gnome-shell-extension-blur-my-shell \
-    gnome-shell-extension-dash-to-panel \
-    gnome-shell-extension-burn-my-windows \
-    gnome-shell-extension-just-perfection \
     gnome-shell-extension-coverflow-alt-tab \
     gnome-shell-extension-auto-accent-colour \
     gnome-shell-extension-accent-directories \
     gnome-shell-extension-launch-new-instance \
     gnome-shell-extension-clipboard-indicator \
-    gnome-shell-extension-vertical-workspaces \
-    gnome-shell-extension-compiz-windows-effect \
-    gnome-shell-extension-rounded-window-corners-reborn
+    gnome-shell-extension-vertical-workspaces
 
 ### Install gnome core apps
 dnf5 install -y --setopt=install_weak_deps=False \
