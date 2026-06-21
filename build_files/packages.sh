@@ -109,12 +109,16 @@ dnf5 install -y --setopt=install_weak_deps=False \
 dnf5 install -y --setopt=install_weak_deps=False \
     loupe \
     papers \
+    snapshot \
     celluloid \
     gnome-logs \
     file-roller \
+    gnome-clocks \
     gnome-weather \
     gnome-firmware \
+    gnome-calendar \
     gnome-calculator \
+    gnome-connections \
     gnome-disk-utility
 
 ### Install gnome circle apps
