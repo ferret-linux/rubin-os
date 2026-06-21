@@ -1,6 +1,6 @@
 [org/gnome/desktop/interface]
 icon-theme='MoreWaita'
-cursor-theme='Adwaita'
+cursor-theme='breeze_cursors'
 gtk-theme='adw-gtk3-dark'
 color-scheme='prefer-dark'
 clock-format='12h'
