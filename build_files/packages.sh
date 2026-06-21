@@ -87,7 +87,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-drive-menu \
     gnome-shell-extension-user-theme \
     gnome-shell-extension-places-menu \
-    gnome-shell-extension-no-overview \
     gnome-shell-extension-tiling-shell \
     gnome-shell-extension-status-icons \
     gnome-shell-extension-dash-to-dock \
@@ -126,7 +125,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     bustle \
     flatseal \
     resources \
-    bootc-gtk \
     pika-backup
 
 ### Install user apps
