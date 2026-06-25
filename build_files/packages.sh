@@ -84,7 +84,6 @@ dnf5 install -y --setopt=install_weak_deps=False \
     gnome-shell-extension-gsconnect \
     gnome-shell-extension-drive-menu \
     gnome-shell-extension-user-theme \
-    gnome-shell-extension-tiling-shell \
     gnome-shell-extension-status-icons \
     gnome-shell-extension-blur-my-shell \
     gnome-shell-extension-coverflow-alt-tab \
