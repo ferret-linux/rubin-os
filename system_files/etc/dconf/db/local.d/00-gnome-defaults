@@ -15,7 +15,7 @@ button-layout='appmenu:minimize,maximize,close'
 
 [org/gnome/shell]
 favorite-apps=['com.mitchellh.ghostty.desktop', 'org.gnome.Nautilus.desktop', 'io.github.kolunmi.Bazaar.desktop', 'helium.desktop', 'code.desktop', 'com.github.marhkb.Pods.desktop', 'org.gnome.World.PikaBackup.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Settings.desktop']
-enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'status-icons@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'caffeine@patapon.info', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'accent-directories@taiwbi.com', 'auto-accent-colour@Wartybix', 'blur-my-shell@aunetx', 'clipboard-indicator@tudmotu.com', 'CoverflowAltTab@palatis.blogspot.com', 'gnome-mosaic@jardon.github.com', 'tilingshell@ferrarodomenico.com']
+enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'status-icons@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'caffeine@patapon.info', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'accent-directories@taiwbi.com', 'auto-accent-colour@Wartybix', 'blur-my-shell@aunetx', 'clipboard-indicator@tudmotu.com', 'CoverflowAltTab@palatis.blogspot.com', 'gnome-mosaic@jardon.github.com']
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='flat'
