@@ -1,147 +1,164 @@
 #!/bin/bash
+set -euxo pipefail
 
-set -ouex pipefail
+# ---------------------------------------------------------------------------
+# Package groups (arrays). Keep these separated/commented for readability;
+# they all get flattened into ONE dnf transaction below.
+# ---------------------------------------------------------------------------
 
-### Install xdg base
-dnf5 install -y --setopt=install_weak_deps=False \
-    xdg-utils \
-    xdg-user-dirs \
-    xdg-user-dirs-gtk \
-    xdg-terminal-exec \
-    xdg-desktop-portal \
-    xdg-desktop-portal-gtk \
-    xdg-desktop-portal-gnome \
+XDG_BASE=(
+  xdg-utils
+  xdg-user-dirs
+  xdg-user-dirs-gtk
+  xdg-terminal-exec
+  xdg-desktop-portal
+  xdg-desktop-portal-gtk
+  xdg-desktop-portal-gnome
+)
 
-## Install Gnome
-dnf5 install -y --setopt=install_weak_deps=False \
-    libsecret \
-    gnome-shell \
-    gnome-tweaks \
-    gnome-session \
-    gnome-keyring \
-    gnome-bluetooth \
-    gnome-keyring-pam \
-    gnome-control-center \
-    gnome-remote-desktop \
-    gnome-online-accounts \
-    gnome-settings-daemon
+GNOME_SHELL=(
+  libsecret
+  gnome-shell
+  gnome-tweaks
+  gnome-session
+  gnome-keyring
+  gnome-bluetooth
+  gnome-keyring-pam
+  gnome-control-center
+  gnome-remote-desktop
+  gnome-online-accounts
+  gnome-settings-daemon
+)
 
-## Install Ghostty
-dnf install -y --setopt=install_weak_deps=False \
-    ghostty \
-    ghostty-kio \
-    ghostty-neovim \
-    ghostty-terminfo \
-    ghostty-nautilus \
-    ghostty-bat-syntax \
-    ghostty-zsh-completion \
-    ghostty-shell-integration
+GHOSTTY=(
+  ghostty
+  ghostty-kio
+  ghostty-neovim
+  ghostty-terminfo
+  ghostty-nautilus
+  ghostty-bat-syntax
+  ghostty-zsh-completion
+  ghostty-shell-integration
+)
 
-## GSconnect
-dnf install -y --setopt=install_weak_deps=False \
-    gnome-menus \
-    nautilus-gsconnect \
-    webextension-gsconnect
+GSCONNECT=(
+  gnome-menus
+  nautilus-gsconnect
+  webextension-gsconnect
+)
 
-## Install Nautilus
-dnf5 install -y --setopt=install_weak_deps=False \
-    sushi \
-    nautilus \
-    nautilus-python \
-    nautilus-extensions \
+NAUTILUS=(
+  sushi
+  nautilus
+  nautilus-python
+  nautilus-extensions
+)
 
-## Install glycin
-dnf5 install -y --setopt=install_weak_deps=False \
-    glycin-libs \
-    glycin-loaders \
-    glycin-gtk4-libs \
-    glycin-thumbnailer
+GLYCIN=(
+  glycin-libs
+  glycin-loaders
+  glycin-gtk4-libs
+  glycin-thumbnailer
+)
 
-### Indtall gnome setup
-dnf5 install -y --setopt=install_weak_deps=False \
-    gdm \
-    gnome-initial-setup
+GNOME_SETUP=(
+  gdm
+  gnome-initial-setup
+)
 
-### Install Network Manager Addons
-dnf5 install -y --setopt=install_weak_deps=False \
-    NetworkManager-ssh-gnome \
-    NetworkManager-openvpn-gnome \
-    NetworkManager-openconnect-gnome
+NETWORKMANAGER_ADDONS=(
+  NetworkManager-ssh-gnome
+  NetworkManager-openvpn-gnome
+  NetworkManager-openconnect-gnome
+)
 
-### Gnome Integrations
-dnf5 install -y --setopt=install_weak_deps=False \
-    orca \
-    espeak-ng \
-    mousetweaks \
-    speech-dispatcher \
-    adwaita-fonts-all \
-    switcheroo-control
+GNOME_INTEGRATIONS=(
+  orca
+  espeak-ng
+  mousetweaks
+  speech-dispatcher
+  adwaita-fonts-all
+  switcheroo-control
+)
 
-### Install gnome extensions
-dnf5 install -y --setopt=install_weak_deps=False \
-    gnome-shell-extension-mosaic \
-    gnome-shell-extension-caffeine \
-    gnome-shell-extension-gsconnect \
-    gnome-shell-extension-drive-menu \
-    gnome-shell-extension-user-theme \
-    gnome-shell-extension-tiling-shell \
-    gnome-shell-extension-status-icons \
-    gnome-shell-extension-blur-my-shell \
-    gnome-shell-extension-coverflow-alt-tab \
-    gnome-shell-extension-auto-accent-colour \
-    gnome-shell-extension-accent-directories \
-    gnome-shell-extension-launch-new-instance \
-    gnome-shell-extension-clipboard-indicator \
-    gnome-shell-extension-vertical-workspaces
+GNOME_EXTENSIONS=(
+  gnome-shell-extension-mosaic
+  gnome-shell-extension-caffeine
+  gnome-shell-extension-gsconnect
+  gnome-shell-extension-drive-menu
+  gnome-shell-extension-user-theme
+  gnome-shell-extension-tiling-shell
+  gnome-shell-extension-status-icons
+  gnome-shell-extension-blur-my-shell
+  gnome-shell-extension-coverflow-alt-tab
+  gnome-shell-extension-auto-accent-colour
+  gnome-shell-extension-accent-directories
+  gnome-shell-extension-launch-new-instance
+  gnome-shell-extension-clipboard-indicator
+  gnome-shell-extension-vertical-workspaces
+)
 
-### Install gnome core apps
-dnf5 install -y --setopt=install_weak_deps=False \
-    loupe \
-    papers \
-    snapshot \
-    celluloid \
-    file-roller \
-    gnome-weather \
-    gnome-firmware \
-    gnome-calculator \
-    gnome-disk-utility
+GNOME_CORE_APPS=(
+  loupe
+  papers
+  snapshot
+  celluloid
+  file-roller
+  gnome-weather
+  gnome-firmware
+  gnome-calculator
+  gnome-disk-utility
+)
 
-### Install gnome circle apps
-dnf5 install -y --setopt=install_weak_deps=False \
-    bazaar \
-    flatseal \
-    resources \
-    pika-backup
+GNOME_CIRCLE_APPS=(
+  bazaar
+  flatseal
+  resources
+  pika-backup
+)
 
-### Install user apps
-dnf5 install -y --setopt=install_weak_deps=False \
-    pods \
-    code \
-    extension-manager
+USER_APPS=(
+  pods
+  code
+  extension-manager
+)
 
-### Gnome Theming
-dnf5 install -y --setopt=install_weak_deps=False \
-    adw-gtk3-theme \
-    breeze-cursor-theme \
-    morewaita-icon-theme
+GNOME_THEMING=(
+  adw-gtk3-theme
+  breeze-cursor-theme
+  morewaita-icon-theme
+)
 
-### Install input methods (ibus)
-dnf5 install -y --setopt=install_weak_deps=False \
-    ibus \
-    ibus-rime \
-    ibus-mozc \
-    ibus-pinyin \
-    ibus-sayura \
-    ibus-hangul \
-    ibus-chewing
+INPUT_METHODS=(
+  ibus
+  ibus-rime
+  ibus-mozc
+  ibus-pinyin
+  ibus-sayura
+  ibus-hangul
+  ibus-chewing
+)
 
-### Update Dconf
-dconf update
+# ---------------------------------------------------------------------------
+# Flatten everything into one package list and install in a single
+# dnf transaction. Order in the array doesn't matter to dnf's resolver.
+# ---------------------------------------------------------------------------
+ALL_PACKAGES=(
+  "${XDG_BASE[@]}"
+  "${GNOME_SHELL[@]}"
+  "${GHOSTTY[@]}"
+  "${GSCONNECT[@]}"
+  "${NAUTILUS[@]}"
+  "${GLYCIN[@]}"
+  "${GNOME_SETUP[@]}"
+  "${NETWORKMANAGER_ADDONS[@]}"
+  "${GNOME_INTEGRATIONS[@]}"
+  "${GNOME_EXTENSIONS[@]}"
+  "${GNOME_CORE_APPS[@]}"
+  "${GNOME_CIRCLE_APPS[@]}"
+  "${USER_APPS[@]}"
+  "${GNOME_THEMING[@]}"
+  "${INPUT_METHODS[@]}"
+)
 
-### Remove Extra .desktop icons
-rm -rf /usr/share/applications/nvim.desktop
-rm -rf /usr/share/applications/btop.desktop
-
-### Enable system services
-systemctl enable gdm
-systemctl enable switcheroo-control.service
+dnf5 install -y --setopt=install_weak_deps=False "${ALL_PACKAGES[@]}"
