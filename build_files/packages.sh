@@ -99,14 +99,9 @@ GNOME_EXTENSIONS=(
 )
 
 GNOME_CORE_APPS=(
-  loupe
-  papers
-  snapshot
-  celluloid
   file-roller
   gnome-weather
   gnome-firmware
-  gnome-calculator
   gnome-disk-utility
 )
 
@@ -114,7 +109,6 @@ GNOME_CIRCLE_APPS=(
   bazaar
   flatseal
   resources
-  pika-backup
 )
 
 USER_APPS=(
