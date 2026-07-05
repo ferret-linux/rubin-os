@@ -12,8 +12,10 @@ on:
     paths-ignore:
       - '**/README.md'
   schedule:
-    - cron: '05 04 * * *'
-    - cron: '05 16 * * *'
+    - cron: '15 03 * * *'
+    - cron: '20 09 * * *'
+    - cron: '35 15 * * *'
+    - cron: '40 21 * * *'
   workflow_dispatch:
 
 concurrency:
