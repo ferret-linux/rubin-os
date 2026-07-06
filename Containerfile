@@ -66,10 +66,10 @@ RUN dnf config-manager setopt ferret-pkgs.enabled=0 && \
     dnf5 clean all && \
     dnf5 clean packages
 
-# ── Package version lock ──────────────────────────────────────
-# Lock all installed packages to their current versions/releases,
-# making rebase/upgrade behavior deterministic for this image.
-RUN dnf versionlock add $(rpm -qa --qf '%{NAME}\n') && rpm -qa | wc -l
+# ── Installed package count ──────────────────────────────────
+# Just a quick sanity check/log of how many packages ended up
+# in the image — no version locking applied.
+RUN echo "📦 Total installed packages: $(rpm -qa | wc -l)"
 
 # ── InitRAMFS build ────────────────────────────────────────────
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
