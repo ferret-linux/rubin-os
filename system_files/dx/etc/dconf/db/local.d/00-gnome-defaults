@@ -1,17 +1,4 @@
-[org/gnome/desktop/interface]
-icon-theme='MoreWaita'
-cursor-theme='breeze_cursors'
-gtk-theme='adw-gtk3-dark'
-color-scheme='prefer-dark'
-clock-format='12h'
-
-[org/gnome/desktop/background]
-picture-uri='file:///usr/share/backgrounds/gnome/ruby-light.jpg'
-picture-uri-dark='file:///usr/share/backgrounds/gnome/ruby-dark.jpg'
-picture-options='zoom'
-
 [org/gnome/shell]
-favorite-apps=['com.mitchellh.ghostty.desktop', 'org.gnome.Nautilus.desktop', 'io.github.kolunmi.Bazaar.desktop', 'code.desktop', 'com.github.marhkb.Pods.desktop', 'org.gnome.World.PikaBackup.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Settings.desktop']
 enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'status-icons@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'caffeine@patapon.info', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'accent-directories@taiwbi.com', 'auto-accent-colour@Wartybix', 'CoverflowAltTab@palatis.blogspot.com', 'gnome-mosaic@jardon.github.com']
 
 [org/gnome/desktop/peripherals/mouse]
