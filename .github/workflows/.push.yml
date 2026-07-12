@@ -25,7 +25,15 @@ jobs:
       matrix:
         include:
           - image_name: rubin-os
+          - image_name: rubin-os-mx
+          - image_name: rubin-os-gx
+          - image_name: rubin-os-dx
+          - image_name: rubin-os-vx
           - image_name: rubin-os-nvidia
+          - image_name: rubin-os-nvidia-mx
+          - image_name: rubin-os-nvidia-gx
+          - image_name: rubin-os-nvidia-dx
+          - image_name: rubin-os-nvidia-vx
 
     steps:
       - name: Login to GHCR
