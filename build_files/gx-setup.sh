@@ -4,133 +4,30 @@ set -euxo pipefail
 # ---------------------------------------------------------------------------
 # Package groups (arrays). Keep these separated/commented for readability;
 # they all get flattened into ONE dnf transaction below.
+#
+# This script runs AFTER mx-setup.sh (all variants) and essentials.sh (all
+# non-mx variants) — both already run for *-gx. Do NOT re-list anything from
+# either of those files here. NOTE: rubin-os-gx builds FROM mink-os-gx,
+# which already ships Steam, Lutris, Wine, Winetricks, Protontricks,
+# Bottles, GameMode, MangoHud, vkBasalt, Gamescope, and controller kmods
+# at the OS layer — this script is the GNOME desktop layer on top of that,
+# not a re-install of any of it.
 # ---------------------------------------------------------------------------
 
-XDG_BASE=(
-  xdg-utils
-  xdg-user-dirs
-  xdg-user-dirs-gtk
-  xdg-terminal-exec
-  xdg-desktop-portal
-  xdg-desktop-portal-gtk
-  xdg-desktop-portal-gnome
+# GUI front-ends for the perf/overlay tools already installed at the OS
+# layer (gamemode, mangohud, vkBasalt) — turns CLI-only tuning into a
+# couple of clicks
+GAMING_TUNING_GUI=(
+  retroarch
+  goverlay
+  steam
 )
 
-GNOME_SHELL=(
-  libsecret
-  gnome-shell
-  gnome-tweaks
-  gnome-session
-  gnome-keyring
-  gnome-bluetooth
-  gnome-keyring-pam
-  gnome-control-center
-  gnome-remote-desktop
-  gnome-online-accounts
-  gnome-settings-daemon
-)
-
-GHOSTTY=(
-  ghostty
-  ghostty-kio
-  ghostty-neovim
-  ghostty-terminfo
-  ghostty-nautilus
-  ghostty-bat-syntax
-  ghostty-zsh-completion
-  ghostty-shell-integration
-)
-
-GSCONNECT=(
-  gnome-menus
-  nautilus-gsconnect
-  webextension-gsconnect
-)
-
-NAUTILUS=(
-  sushi
-  nautilus
-  nautilus-python
-  nautilus-extensions
-)
-
-GLYCIN=(
-  glycin-libs
-  glycin-loaders
-  glycin-gtk4-libs
-  glycin-thumbnailer
-)
-
-GNOME_SETUP=(
-  gdm
-  gnome-initial-setup
-)
-
-NETWORKMANAGER_ADDONS=(
-  NetworkManager-ssh-gnome
-  NetworkManager-openvpn-gnome
-  NetworkManager-openconnect-gnome
-)
-
-GNOME_INTEGRATIONS=(
-  orca
-  espeak-ng
-  mousetweaks
-  speech-dispatcher
-  adwaita-fonts-all
-  switcheroo-control
-)
-
-GNOME_EXTENSIONS=(
-  gnome-shell-extension-mosaic
-  gnome-shell-extension-caffeine
-  gnome-shell-extension-gsconnect
-  gnome-shell-extension-drive-menu
-  gnome-shell-extension-user-theme
-  gnome-shell-extension-tiling-shell
-  gnome-shell-extension-status-icons
-  gnome-shell-extension-blur-my-shell
-  gnome-shell-extension-coverflow-alt-tab
-  gnome-shell-extension-auto-accent-colour
-  gnome-shell-extension-accent-directories
-  gnome-shell-extension-launch-new-instance
-  gnome-shell-extension-clipboard-indicator
-  gnome-shell-extension-vertical-workspaces
-)
-
-GNOME_CORE_APPS=(
-  file-roller
-  gnome-weather
-  gnome-firmware
-  gnome-disk-utility
-)
-
-GNOME_CIRCLE_APPS=(
-  bazaar
-  flatseal
-  resources
-)
-
-USER_APPS=(
-  pods
-  code
-  extension-manager
-)
-
-GNOME_THEMING=(
-  adw-gtk3-theme
-  breeze-cursor-theme
-  morewaita-icon-theme
-)
-
-INPUT_METHODS=(
-  ibus
-  ibus-rime
-  ibus-mozc
-  ibus-pinyin
-  ibus-sayura
-  ibus-hangul
-  ibus-chewing
+# Broad third-party controller udev coverage (8BitDo, DualSense,
+# DualShock, etc.) beyond the specific wheel/HOTAS kmods mink-os-gx
+# already ships
+GAMING_UDEV=(
+  steam-devices
 )
 
 # ---------------------------------------------------------------------------
@@ -139,20 +36,10 @@ INPUT_METHODS=(
 # ---------------------------------------------------------------------------
 ALL_PACKAGES=(
   "${XDG_BASE[@]}"
-  "${GNOME_SHELL[@]}"
-  "${GHOSTTY[@]}"
-  "${GSCONNECT[@]}"
-  "${NAUTILUS[@]}"
-  "${GLYCIN[@]}"
-  "${GNOME_SETUP[@]}"
-  "${NETWORKMANAGER_ADDONS[@]}"
-  "${GNOME_INTEGRATIONS[@]}"
-  "${GNOME_EXTENSIONS[@]}"
-  "${GNOME_CORE_APPS[@]}"
-  "${GNOME_CIRCLE_APPS[@]}"
-  "${USER_APPS[@]}"
-  "${GNOME_THEMING[@]}"
-  "${INPUT_METHODS[@]}"
+  "${PROTON_MANAGEMENT[@]}"
+  "${GAMING_LAUNCHERS[@]}"
+  "${GAMING_TUNING_GUI[@]}"
+  "${GAMING_UDEV[@]}"
 )
 
 dnf5 install -y --setopt=install_weak_deps=False "${ALL_PACKAGES[@]}"

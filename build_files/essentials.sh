@@ -4,16 +4,18 @@ set -euxo pipefail
 # ---------------------------------------------------------------------------
 # Package groups (arrays). Keep these separated/commented for readability;
 # they all get flattened into ONE dnf transaction below.
+#
+# This script runs AFTER mx-setup.sh (which runs for every variant,
+# including this one). Do NOT re-list anything already installed by
+# mx-setup.sh's GNOME_SHELL, NAUTILUS, GLYCIN, GNOME_SETUP,
+# NETWORKMANAGER_ADDONS, GNOME_INTEGRATIONS, GNOME_CORE_APPS,
+# GNOME_CIRCLE_APPS, or INPUT_METHODS arrays.
 # ---------------------------------------------------------------------------
 
-GNOME_SHELL=(
-  libsecret
+# Extra GNOME shell tooling beyond mx's core (gnome-shell/session/keyring/etc.)
+GNOME_SHELL_EXTRAS=(
   gnome-tweaks
-  gnome-keyring
-  gnome-keyring-pam
-  gnome-remote-desktop
   gnome-online-accounts
-  gnome-settings-daemon
 )
 
 GHOSTTY=(
@@ -33,38 +35,23 @@ GSCONNECT=(
   webextension-gsconnect
 )
 
-NAUTILUS=(
+# Extra Nautilus add-ons beyond mx's core 'nautilus' package
+NAUTILUS_EXTRAS=(
   sushi
-  nautilus
   nautilus-python
   nautilus-extensions
 )
 
-GLYCIN=(
-  glycin-libs
-  glycin-loaders
-  glycin-gtk4-libs
-  glycin-thumbnailer
-)
-
-GNOME_SETUP=(
-  gdm
-  gnome-initial-setup
-)
-
-NETWORKMANAGER_ADDONS=(
-  NetworkManager-ssh-gnome
+NETWORKMANAGER_ADDONS_EXTRAS=(
   NetworkManager-openvpn-gnome
   NetworkManager-openconnect-gnome
 )
 
-GNOME_INTEGRATIONS=(
+ACCESSIBILITY=(
   orca
   espeak-ng
   mousetweaks
   speech-dispatcher
-  adwaita-fonts-all
-  switcheroo-control
 )
 
 GNOME_EXTENSIONS=(
@@ -81,15 +68,12 @@ GNOME_EXTENSIONS=(
   gnome-shell-extension-clipboard-indicator
 )
 
-GNOME_CORE_APPS=(
-  file-roller
+GNOME_CORE_APPS_EXTRAS=(
   gnome-weather
   gnome-firmware
-  gnome-disk-utility
 )
 
-GNOME_CIRCLE_APPS=(
-  bazaar
+GNOME_CIRCLE_APPS_EXTRAS=(
   flatseal
   resources
 )
@@ -104,35 +88,22 @@ GNOME_THEMING=(
   morewaita-icon-theme
 )
 
-INPUT_METHODS=(
-  ibus
-  ibus-rime
-  ibus-mozc
-  ibus-pinyin
-  ibus-sayura
-  ibus-hangul
-  ibus-chewing
-)
-
 # ---------------------------------------------------------------------------
 # Flatten everything into one package list and install in a single
 # dnf transaction. Order in the array doesn't matter to dnf's resolver.
 # ---------------------------------------------------------------------------
 ALL_PACKAGES=(
-  "${GNOME_SHELL[@]}"
+  "${GNOME_SHELL_EXTRAS[@]}"
   "${GHOSTTY[@]}"
   "${GSCONNECT[@]}"
-  "${NAUTILUS[@]}"
-  "${GLYCIN[@]}"
-  "${GNOME_SETUP[@]}"
-  "${NETWORKMANAGER_ADDONS[@]}"
-  "${GNOME_INTEGRATIONS[@]}"
+  "${NAUTILUS_EXTRAS[@]}"
+  "${NETWORKMANAGER_ADDONS_EXTRAS[@]}"
+  "${ACCESSIBILITY[@]}"
   "${GNOME_EXTENSIONS[@]}"
-  "${GNOME_CORE_APPS[@]}"
-  "${GNOME_CIRCLE_APPS[@]}"
+  "${GNOME_CORE_APPS_EXTRAS[@]}"
+  "${GNOME_CIRCLE_APPS_EXTRAS[@]}"
   "${USER_APPS[@]}"
   "${GNOME_THEMING[@]}"
-  "${INPUT_METHODS[@]}"
 )
 
 dnf5 install -y --setopt=install_weak_deps=False "${ALL_PACKAGES[@]}"
