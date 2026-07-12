@@ -18,9 +18,13 @@ set -euxo pipefail
 # layer (gamemode, mangohud, vkBasalt) — turns CLI-only tuning into a
 # couple of clicks
 GAMING_TUNING_GUI=(
-  retroarch
-  goverlay
   steam
+  lutris
+  bottles
+  goverlay
+  retroarch
+  protonplus
+  heroic-games-launcher
 )
 
 # Broad third-party controller udev coverage (8BitDo, DualSense,
