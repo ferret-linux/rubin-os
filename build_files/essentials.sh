@@ -6,25 +6,11 @@ set -euxo pipefail
 # they all get flattened into ONE dnf transaction below.
 # ---------------------------------------------------------------------------
 
-XDG_BASE=(
-  xdg-utils
-  xdg-user-dirs
-  xdg-user-dirs-gtk
-  xdg-terminal-exec
-  xdg-desktop-portal
-  xdg-desktop-portal-gtk
-  xdg-desktop-portal-gnome
-)
-
 GNOME_SHELL=(
   libsecret
-  gnome-shell
   gnome-tweaks
-  gnome-session
   gnome-keyring
-  gnome-bluetooth
   gnome-keyring-pam
-  gnome-control-center
   gnome-remote-desktop
   gnome-online-accounts
   gnome-settings-daemon
@@ -82,12 +68,10 @@ GNOME_INTEGRATIONS=(
 )
 
 GNOME_EXTENSIONS=(
-  gnome-shell-extension-mosaic
   gnome-shell-extension-caffeine
   gnome-shell-extension-gsconnect
   gnome-shell-extension-drive-menu
   gnome-shell-extension-user-theme
-  gnome-shell-extension-tiling-shell
   gnome-shell-extension-status-icons
   gnome-shell-extension-blur-my-shell
   gnome-shell-extension-coverflow-alt-tab
@@ -95,7 +79,6 @@ GNOME_EXTENSIONS=(
   gnome-shell-extension-accent-directories
   gnome-shell-extension-launch-new-instance
   gnome-shell-extension-clipboard-indicator
-  gnome-shell-extension-vertical-workspaces
 )
 
 GNOME_CORE_APPS=(
@@ -112,8 +95,6 @@ GNOME_CIRCLE_APPS=(
 )
 
 USER_APPS=(
-  pods
-  code
   extension-manager
 )
 
@@ -138,7 +119,6 @@ INPUT_METHODS=(
 # dnf transaction. Order in the array doesn't matter to dnf's resolver.
 # ---------------------------------------------------------------------------
 ALL_PACKAGES=(
-  "${XDG_BASE[@]}"
   "${GNOME_SHELL[@]}"
   "${GHOSTTY[@]}"
   "${GSCONNECT[@]}"
