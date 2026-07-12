@@ -4,18 +4,15 @@ set -euxo pipefail
 # ---------------------------------------------------------------------------
 # Package groups (arrays). Keep these separated/commented for readability;
 # they all get flattened into ONE dnf transaction below.
+#
+# This script runs AFTER mx-setup.sh (all variants) and essentials.sh (all
+# non-mx variants) — both already run for *-dx. Do NOT re-list anything from
+# either of those files here.
 # ---------------------------------------------------------------------------
 
-GNOME_EXTENSIONS=(
+GNOME_EXTENSIONS_EXTRAS=(
   gnome-shell-extension-mosaic
   gnome-shell-extension-tiling-shell
-  gnome-shell-extension-status-icons
-  gnome-shell-extension-blur-my-shell
-  gnome-shell-extension-coverflow-alt-tab
-  gnome-shell-extension-auto-accent-colour
-  gnome-shell-extension-accent-directories
-  gnome-shell-extension-launch-new-instance
-  gnome-shell-extension-clipboard-indicator
   gnome-shell-extension-vertical-workspaces
 )
 
@@ -29,7 +26,7 @@ USER_APPS=(
 # dnf transaction. Order in the array doesn't matter to dnf's resolver.
 # ---------------------------------------------------------------------------
 ALL_PACKAGES=(
-  "${GNOME_EXTENSIONS[@]}"
+  "${GNOME_EXTENSIONS_EXTRAS[@]}"
   "${USER_APPS[@]}"
 )
 

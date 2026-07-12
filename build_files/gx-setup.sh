@@ -35,9 +35,6 @@ GAMING_UDEV=(
 # dnf transaction. Order in the array doesn't matter to dnf's resolver.
 # ---------------------------------------------------------------------------
 ALL_PACKAGES=(
-  "${XDG_BASE[@]}"
-  "${PROTON_MANAGEMENT[@]}"
-  "${GAMING_LAUNCHERS[@]}"
   "${GAMING_TUNING_GUI[@]}"
   "${GAMING_UDEV[@]}"
 )
