@@ -30,10 +30,10 @@ jobs:
           - image_name: rubin-os-dx
           - image_name: rubin-os-vx
           - image_name: rubin-os-nvidia
-          - image_name: rubin-os-nvidia-mx
-          - image_name: rubin-os-nvidia-gx
-          - image_name: rubin-os-nvidia-dx
-          - image_name: rubin-os-nvidia-vx
+          - image_name: rubin-os-mx-nvidia
+          - image_name: rubin-os-gx-nvidia
+          - image_name: rubin-os-dx-nvidia
+          - image_name: rubin-os-vx-nvidia
 
     steps:
       - name: Login to GHCR
