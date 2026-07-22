@@ -24,6 +24,7 @@ GAMING_TUNING_GUI=(
   goverlay
   retroarch
   protonplus
+  input-remapper
   heroic-games-launcher
 )
 
