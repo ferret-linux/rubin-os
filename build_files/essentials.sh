@@ -69,7 +69,6 @@ GNOME_EXTENSIONS=(
 )
 
 GNOME_CORE_APPS_EXTRAS=(
-  gnome-weather
   gnome-firmware
 )
 

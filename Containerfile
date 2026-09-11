@@ -20,10 +20,6 @@ ARG IMAGE_VENDOR="ferret-linux"
 ARG IMAGE_TAG="latest"
 ENV IMAGE_NAME=${IMAGE_NAME}
 
-# Make /opt a real directory before package install (some packages
-# expect to write here directly).
-RUN rm -rf /opt && mkdir -p /opt
-
 # ── Repo setup: ferret-pkgs ────────────────────────────────────
 # mink-os disables/removes its build-time repos before it ships, so
 # we have to re-add whatever RubinOS's own packages (ghostty,
@@ -96,8 +92,9 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 # making rebase/upgrade behavior deterministic for this image.
 RUN dnf versionlock add $(rpm -qa --qf '%{NAME}\n')
 
-# ── Enable services ──────────────────────────────────────────
-RUN systemctl enable switcheroo-control.service && \
+# ── Setup services & Desktop ──────────────────────────────────
+RUN rm -rf /usr/share/applications/remote-viewer.desktop && \
+    systemctl enable switcheroo-control.service && \
     systemctl enable gdm
 
 # ── /opt → immutable tree migration ───────────────────────────
@@ -110,7 +107,6 @@ RUN mkdir -p /usr/lib/opt && \
         opt=$(basename "$dir"); \
         echo "L+?  \"/opt/${opt}\"  -  -  -  -  /usr/lib/opt/${opt}" > /usr/lib/tmpfiles.d/99-optfix-${opt}.conf; \
     done && \
-    rm -rf /opt && ln -s /var/opt /opt && \
     mkdir -p /var/roothome && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
