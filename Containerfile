@@ -32,6 +32,10 @@ RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferr
     dnf config-manager setopt ferret-pkgs.priority=90 && \
     dnf --refresh makecache
 
+# Make /opt a real directory before package install (some packages
+# expect to write here directly).
+RUN rm -rf /opt && mkdir -p /opt
+
 # ── OS release info ──────────────────────────────────────────
 RUN sed -i 's/^NAME=.*/NAME="RubinOS"/' /usr/lib/os-release && \
     sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="RubinOS Linux"/' /usr/lib/os-release
@@ -98,15 +102,19 @@ RUN rm -rf /usr/share/applications/remote-viewer.desktop && \
     systemctl enable gdm
 
 # ── /opt → immutable tree migration ───────────────────────────
-# Move /opt contents into the immutable /usr tree, create
-# tmpfiles.d entries to symlink them back at runtime, then replace
-# /opt with a symlink into /var so it stays writable.
+# Move /opt contents into the immutable /usr tree and create
+# tmpfiles.d entries to symlink them back at runtime.
 RUN mkdir -p /usr/lib/opt && \
     mv /opt/* /usr/lib/opt/ 2>/dev/null || true && \
     for dir in /usr/lib/opt/*/; do \
         opt=$(basename "$dir"); \
         echo "L+?  \"/opt/${opt}\"  -  -  -  -  /usr/lib/opt/${opt}" > /usr/lib/tmpfiles.d/99-optfix-${opt}.conf; \
-    done && \
+    done
+
+# ── Directory fixes ──────────────────────────────────────────
+# Replace /opt with a symlink into /var so it stays writable, and
+# ensure other runtime-required directories exist with correct perms.
+RUN rm -rf /opt && ln -s /var/opt /opt && \
     mkdir -p /var/roothome && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
