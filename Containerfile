@@ -24,7 +24,7 @@ ENV IMAGE_NAME=${IMAGE_NAME}
 # mink-os disables/removes its build-time repos before it ships, so
 # we have to re-add whatever RubinOS's own packages (ghostty,
 # gnome-shell-extension-*, etc.) come from.
-RUN dnf config-manager addrepo --from-repofile=https://ferretlinux.org/repo/ferret-pkgs.repo && \
+RUN dnf config-manager addrepo --from-repofile=https://ferret-linux.github.io/repo/ferret-pkgs.repo && \
     dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo && \
     dnf config-manager setopt ferret-pkgs.enabled=1 && \
     dnf config-manager setopt fedora-multimedia.enabled=1 && \
