@@ -20,9 +20,13 @@ GNOME_SHELL=(
   libsecret
   gnome-shell
   gnome-session
-  gnome-keyring
+  # Fedora 45 moved the default Secret Service from gnome-keyring to oo7.
+  # gdm's PAM stack already ships pam_oo7.so lines; installing the module
+  # (pulled in by gdm) plus the daemon makes oo7 own org.freedesktop.secrets.
+  oo7-daemon
+  oo7-portal
+  pam_oo7
   gnome-bluetooth
-  gnome-keyring-pam
   gnome-control-center
   gnome-remote-desktop
   gnome-settings-daemon

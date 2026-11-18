@@ -12,7 +12,7 @@ set -euxo pipefail
 # GNOME_CIRCLE_APPS, or INPUT_METHODS arrays.
 # ---------------------------------------------------------------------------
 
-# Extra GNOME shell tooling beyond mx's core (gnome-shell/session/keyring/etc.)
+# Extra GNOME shell tooling beyond mx's core (gnome-shell/session/oo7/etc.)
 GNOME_SHELL_EXTRAS=(
   gnome-tweaks
   gnome-online-accounts
