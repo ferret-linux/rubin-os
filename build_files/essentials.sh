@@ -79,6 +79,7 @@ GNOME_CIRCLE_APPS_EXTRAS=(
 
 USER_APPS=(
   helium-drm
+  zen-browser
   extension-manager
 )
 
