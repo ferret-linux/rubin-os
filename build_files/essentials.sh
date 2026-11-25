@@ -20,13 +20,6 @@ GNOME_SHELL_EXTRAS=(
 
 GHOSTTY=(
   ghostty
-  ghostty-kio
-  ghostty-neovim
-  ghostty-terminfo
-  ghostty-nautilus
-  ghostty-bat-syntax
-  ghostty-zsh-completion
-  ghostty-shell-integration
 )
 
 GSCONNECT=(
